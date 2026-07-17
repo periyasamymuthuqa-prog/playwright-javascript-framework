@@ -1,40 +1,54 @@
 const { defineConfig, devices } = require('@playwright/test');
 
+
 module.exports = defineConfig({
 
-  testDir: './tests',
+    testDir: './tests',
 
-  timeout: 30000,
+    timeout: 30000,
 
-  expect: {
-    timeout: 5000
-  },
 
-  reporter: [
-    ['html']
-  ],
-
-  use: {
-    baseURL: 'https://www.saucedemo.com',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure'
-  },
-
-  projects: [
-    {
-      name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome']
-      }
+    expect: {
+        timeout: 5000
     },
 
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox']
-      }
-    }
-  ]
+
+    reporter: [
+        ['html'],
+        ['allure-playwright']
+    ],
+
+
+    use: {
+
+        baseURL: 'https://www.saucedemo.com',
+
+        trace: 'on-first-retry',
+
+        screenshot: 'only-on-failure',
+
+        video: 'retain-on-failure'
+
+    },
+
+
+    projects: [
+
+        {
+            name: 'chromium',
+            use: {
+                ...devices['Desktop Chrome']
+            }
+        },
+
+
+        {
+            name: 'firefox',
+            use: {
+                ...devices['Desktop Firefox']
+            }
+        }
+
+    ]
 
 });

@@ -1,7 +1,8 @@
 const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
 
-test('Valid user login test', async ({ page }) => {
+
+test('Valid user login validation', async ({ page }) => {
 
     const loginPage = new LoginPage(page);
 
@@ -12,8 +13,6 @@ test('Valid user login test', async ({ page }) => {
         'secret_sauce'
     );
 
-    await expect(page).toHaveURL(
-        /inventory.html/
-    );
+    await expect(page).toHaveURL(/inventory.html/);
 
 });

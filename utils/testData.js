@@ -1,16 +1,28 @@
+const env = require('../config/env');
+
+
 const testData = {
 
     validUser: {
-        username: "standard_user",
-        password: "secret_sauce"
+
+        username: env.username,
+
+        password: env.password
+
     },
 
+
     checkoutUser: {
+
         firstName: "Periyasamy",
+
         lastName: "Muthu",
+
         postalCode: "600001"
+
     }
 
 };
+
 
 module.exports = testData;

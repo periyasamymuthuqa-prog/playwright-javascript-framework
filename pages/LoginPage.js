@@ -1,3 +1,5 @@
+const env = require('../config/env');
+
 class LoginPage {
 
     constructor(page) {
@@ -7,15 +9,32 @@ class LoginPage {
         this.loginButton = '#login-button';
     }
 
+
     async navigate() {
-        await this.page.goto('https://www.saucedemo.com/');
+
+        await this.page.goto(env.baseUrl);
+
     }
 
+
     async login(username, password) {
-        await this.page.fill(this.username, username);
-        await this.page.fill(this.password, password);
-        await this.page.click(this.loginButton);
+
+        await this.page.fill(
+            this.username,
+            username
+        );
+
+        await this.page.fill(
+            this.password,
+            password
+        );
+
+        await this.page.click(
+            this.loginButton
+        );
+
     }
+
 }
 
 module.exports = { LoginPage };

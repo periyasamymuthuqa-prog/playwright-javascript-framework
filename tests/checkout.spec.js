@@ -1,61 +1,54 @@
 const { test, expect } = require('@playwright/test');
 
-const { LoginPage } =
-require('../pages/LoginPage');
+const { LoginPage } = require('../pages/LoginPage');
+const { ProductsPage } = require('../pages/ProductsPage');
+const { CheckoutPage } = require('../pages/CheckoutPage');
 
-const { ProductsPage } =
-require('../pages/ProductsPage');
-
-const { CheckoutPage } =
-require('../pages/CheckoutPage');
+const testData = require('../utils/testData');
 
 
-test('Complete checkout flow', async ({ page }) => {
+test('Complete checkout flow validation', async ({ page }) => {
+
+    const loginPage = new LoginPage(page);
+    const productsPage = new ProductsPage(page);
+    const checkoutPage = new CheckoutPage(page);
 
 
-    const loginPage =
-    new LoginPage(page);
-
-    const productsPage =
-    new ProductsPage(page);
-
-    const checkoutPage =
-    new CheckoutPage(page);
-
-
+    // Login to application
     await loginPage.navigate();
 
-
     await loginPage.login(
-        'standard_user',
-        'secret_sauce'
+        testData.validUser.username,
+        testData.validUser.password
     );
 
 
+    // Add product to cart
     await productsPage.addProductToCart();
-
 
     await productsPage.openCart();
 
 
+    // Checkout process
     await checkoutPage.clickCheckout();
 
 
     await checkoutPage.enterCustomerDetails(
-        'Periyasamy',
-        'Muthu',
-        '600001'
+        testData.checkoutUser.firstName,
+        testData.checkoutUser.lastName,
+        testData.checkoutUser.postalCode
     );
 
 
+    // Complete order
     await checkoutPage.finishOrder();
 
 
+    // Validate successful order completion
     await expect(
         page.locator('.complete-header')
     ).toContainText(
-        'Thank you'
+        'Thank you for your order'
     );
-
 
 });

@@ -42,8 +42,60 @@ https://www.saucedemo.com/
 - Checkout flow validation
 - Logout functionality
 
+## Framework Architecture
+
+This automation framework follows the Page Object Model (POM) design pattern.
+
+Architecture:
+
+Test Layer
+    |
+    |
+Page Object Layer
+    |
+    |
+Utility Layer
+    |
+    |
+Playwright Engine
+
+
+## Automation Features
+
+- Page Object Model implementation
+- Cross-browser testing
+- Reusable page components
+- Test data management
+- Screenshot capture on failures
+- Video recording on failures
+- Trace Viewer debugging
+- HTML test reports
+- Parallel test execution
+
+
+## CI/CD Integration
+
+GitHub Actions is configured to automatically execute Playwright tests when:
+
+- Code is pushed to the main branch
+- Pull requests are created
+
+
+## Reporting
+
+The framework generates:
+
+- Playwright HTML reports
+- Screenshots for failed tests
+- Trace files for debugging
+
+
 ## Author
 
 Periyasamy Muthu
 
 Senior SDET | Automation Test Engineer
+
+LinkedIn:
+https://www.linkedin.com/in/periyasamymuthu
+

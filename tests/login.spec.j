@@ -1,18 +1,30 @@
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../pages/LoginPage');
+
+const { LoginPage } =
+require('../pages/LoginPage');
+
+const testData =
+require('../utils/testData');
 
 
 test('Valid user login validation', async ({ page }) => {
 
-    const loginPage = new LoginPage(page);
+
+    const loginPage =
+    new LoginPage(page);
+
 
     await loginPage.navigate();
 
+
     await loginPage.login(
-        'standard_user',
-        'secret_sauce'
+        testData.validUser.username,
+        testData.validUser.password
     );
 
-    await expect(page).toHaveURL(/inventory.html/);
+
+    await expect(page)
+    .toHaveURL(/inventory.html/);
+
 
 });

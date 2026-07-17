@@ -89,6 +89,40 @@ The framework generates:
 - Screenshots for failed tests
 - Trace files for debugging
 
+## Reporting
+
+This framework supports multiple reporting mechanisms.
+
+### Playwright HTML Report
+
+Execute:
+
+npm run test
+
+View report:
+
+npm run test:report
+
+
+### Allure Report
+
+Generate Allure report:
+
+npm run allure:generate
+
+
+Open Allure report:
+
+npm run allure:open
+
+
+Reports include:
+
+- Test execution status
+- Failed test details
+- Screenshots
+- Execution history
+- Debugging information
 
 ## Author
 
